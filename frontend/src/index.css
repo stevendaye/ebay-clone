@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: MarketSansRegular;
+    src: url("./assets/fonts/MarketSans-Regular-WebS.woff2");
+    font-weight: normal;
+    font-size: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: MarketSansSemiBold;
+    src: url("./assets/fonts/MarketSans-SemiBold-WebS.woff2");
+    font-weight: normal;
+    font-size: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: CircularXXWebBook;
+    src: url("./assets/fonts/CircularXXWeb-Book.woff2");
+    font-weight: normal;
+    font-size: normal;
+    font-display: swap;
+  }
+}
+
+body {
+  font-family: MarketSansRegular;
+  background-color: white;
+}
