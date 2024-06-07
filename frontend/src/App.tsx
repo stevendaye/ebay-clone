@@ -1,13 +1,28 @@
 import { Routes, Route } from "react-router-dom";
-import { Login, Signup } from "./pages";
+import {
+  ActivationPage,
+  HomePage,
+  LoginPage,
+  NotFoundPage,
+  SignupPage,
+} from "./pages";
 import routes from "./routes";
+import { Layout } from "./Layouts";
 
 const App = () => {
   return (
-    <Routes>
-      <Route path={routes.login} element={<Login />} />
-      <Route path={routes.signup} element={<Signup />} />
-    </Routes>
+    <Layout>
+      <Routes>
+        <Route path={routes.home} element={<HomePage />} />
+        <Route path={routes.signin} element={<LoginPage />} />
+        <Route path={routes.signup} element={<SignupPage />} />
+        <Route
+          path={`${routes.activationLink}/:token`}
+          element={<ActivationPage />}
+        />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </Layout>
   );
 };
 

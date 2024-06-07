@@ -1,2 +1,5 @@
-export { default as Login } from "./Login";
-export { default as Signup } from "./Signup";
+export { default as LoginPage } from "./LoginPage";
+export { default as SignupPage } from "./SignupPage";
+export { default as HomePage } from "./HomePage";
+export { default as ActivationPage } from "./ActivationPage";
+export { default as NotFoundPage } from "./404Page";
