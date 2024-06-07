@@ -4,7 +4,7 @@ A fully-fledged project which represents a clone of Ebay.com. It is build on the
 
 ![Alt text](frontend/src/assets/images/signup-page.png "eBay.com Clone - Signup Page")
 
-## Feature
+## Features
 
 - Sign up / Sign in
 - Create shop
@@ -24,5 +24,5 @@ A fully-fledged project which represents a clone of Ebay.com. It is build on the
 - Node.js
 - Express.js
 - Mutler (for image handling)
-- Redux Toolkit (for state management)
+- Redux Thunk (for state management)
 - Palywright (for end-to-end testing)
