@@ -14,8 +14,9 @@ A fully-fledged project which represents a clone of Ebay.com. It is build on the
 - Add products to cart
 - Activate Account via email
 - Change Password
-- User Advanced Settings
-- Chat with seller from a specific product
+- Advanced User Settings
+- Real time Chat with seller
+- Payment with Stripe
 
 ## Technologies Used
 
@@ -23,6 +24,6 @@ A fully-fledged project which represents a clone of Ebay.com. It is build on the
 - MongoDB
 - Node.js
 - Express.js
-- Mutler (for image handling)
+- Multer (for image handling)
 - Redux Thunk (for state management)
 - Palywright (for end-to-end testing)

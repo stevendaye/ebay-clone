@@ -5,8 +5,9 @@ export default {
   forgotPassword: "/forgot-password",
   activationLink: "/activate-account",
   api: {
-    register: "/api/user/signup",
+    signup: "/api/user/signup",
     login: "/api/user/signin",
     activateAccount: "/api/user/account/activate",
+    validateToken: "/api/user/verify/token",
   },
 };

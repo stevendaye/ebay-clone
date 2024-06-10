@@ -1,12 +1,10 @@
-import { Request, Response } from "express";
 import express from "express";
 import dotenv from "dotenv";
 import handleErrors from "./middlewares/handleErrors";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
 import cors from "cors";
-import userRoutes from "./routes/user";
-import path from "path";
+import { authRoutes, userRoutes } from "./routes";
 
 const app = express();
 
@@ -22,13 +20,8 @@ app.use("/", express.static("uploads"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors({ origin: process.env.FRONTEND_URL, credentials: true }));
 
-app.use(express.static(path.join(__dirname, "../../frontend/dist")));
-
 userRoutes(app);
-
-app.get("*", (req: Request, res: Response) => {
-  res.sendFile(path.join(__dirname, "../../frontend/dist/index.html"));
-});
+authRoutes(app);
 
 // Handle Errors
 app.use(handleErrors);

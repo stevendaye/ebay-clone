@@ -2,28 +2,28 @@ import apiClient from "./apiClient";
 import routes from "../routes";
 import { LoginFormType } from "../pages/LoginPage";
 
-const BAD_REQUEST: number = 400;
-const INTERNAL_SERVER_ERROR: number = 500;
+const errosStatus = [400, 401, 500];
 
-export const signUp = async (formData: FormData) => {
-  const res = await apiClient.post(`${routes.api.register}`, formData, {
+export const signup = async (formData: FormData) => {
+  const res = await apiClient.post(`${routes.api.signup}`, formData, {
     headers: { "Content-Type": "multipart/form-data" },
-    withCredentials: true,
   });
 
-  if (res.status === BAD_REQUEST || res.status === INTERNAL_SERVER_ERROR)
-    throw new Error(res.data);
+  if (errosStatus.includes(res.status)) throw new Error(res.data);
 
   return res.data;
 };
 
 export const activateAccount = async (token: string) => {
-  const res = await apiClient.post(`${routes.api.activateAccount}`, {
-    activation_token: token,
-  });
+  const res = await apiClient.post(
+    `${routes.api.activateAccount}`,
+    {
+      activation_token: token,
+    },
+    { withCredentials: true }
+  );
 
-  if (res.status === BAD_REQUEST || res.status === INTERNAL_SERVER_ERROR)
-    throw new Error(res.data);
+  if (errosStatus.includes(res.status)) throw new Error(res.data);
 
   return res.data;
 };
@@ -34,8 +34,17 @@ export const signin = async (formData: LoginFormType) => {
     withCredentials: true,
   });
 
-  if (res.status === BAD_REQUEST || res.status === INTERNAL_SERVER_ERROR)
-    throw new Error(res.data);
+  if (errosStatus.includes(res.status)) throw new Error(res.data);
+
+  return res.data;
+};
+
+export const validateToken = async () => {
+  const res = await apiClient.get(`${routes.api.validateToken}`, {
+    withCredentials: true,
+  });
+
+  if (errosStatus.includes(res.status)) throw new Error(res.data);
 
   return res.data;
 };

@@ -29,8 +29,9 @@ const createActivationToken = (user: UserReq) => {
 export default {
   //@access Public
   //@route POST /user/signup
-  async signUp(req: Request, res: Response, next: NextFunction) {
+  async signup(req: Request, res: Response, next: NextFunction) {
     const errors = validationResult(req);
+
     if (!errors.isEmpty()) {
       const errMessage = errors.array()[0].msg;
       return next(new ErrorHandler(errMessage, 400));
@@ -51,7 +52,7 @@ export default {
         }
       });
 
-      return next(new ErrorHandler("User already exists", 400));
+      return next(new ErrorHandler("This user is already in our record", 400));
     }
 
     const filename = req.file?.filename;
@@ -99,13 +100,19 @@ export default {
         process.env.JWT_SECRET_KEY as string
       ) as UserPayload;
 
-      if (!decoded) return next(new ErrorHandler("Token is invalid", 400));
+      if (!decoded)
+        return next(
+          new ErrorHandler("Your Token has either exprired or is invalid ", 400)
+        );
 
       const { firstName, lastName, email, password, avatar } = decoded;
 
       let user = await User.findOne({ email });
 
-      if (user) return next(new ErrorHandler("User already exists", 400));
+      if (user)
+        return next(
+          new ErrorHandler("This user has already been activated", 400)
+        );
 
       user = await User.create({
         firstName,
@@ -116,15 +123,15 @@ export default {
       });
       sendToken(user, 201, res);
     } catch (error: any) {
-      console.log("JWT Activation Error:", error);
-      return next(new ErrorHandler(error.message, 400));
+      return next(new ErrorHandler(error.message, 500));
     }
   },
 
   //@access Public
   //@route POST /user/signin
-  async signIn(req: Request, res: Response, next: NextFunction) {
+  async signin(req: Request, res: Response, next: NextFunction) {
     const errors = validationResult(req);
+
     if (!errors.isEmpty()) {
       const errMessage = errors.array()[0].msg;
       return next(new ErrorHandler(errMessage, 400));
@@ -132,7 +139,7 @@ export default {
 
     try {
       const { email, password } = req.body;
-      const user = await User.findOne({ email }).select("+password");
+      const user = await User.findOne({ email });
 
       if (!user)
         return next(
@@ -146,10 +153,12 @@ export default {
           new ErrorHandler("Either your email or password is incorrect", 400)
         );
 
+      user.password = "";
+
       sendToken(user, 201, res);
     } catch (error: any) {
       console.log("Signin Error:", error);
-      return next(new ErrorHandler(error.message, 400));
+      return next(new ErrorHandler(error.message, 500));
     }
   },
 };

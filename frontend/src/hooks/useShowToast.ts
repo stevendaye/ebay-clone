@@ -1,16 +1,16 @@
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-
-type ToastProps = {
-  status: string;
-  message: string;
-};
+import { AppState } from "../redux/store";
 
 export const useShowToast = () => {
-  const showToast = ({ status, message }: ToastProps) => {
+  const { status, message } = useSelector(
+    (state: AppState) => state.toastState
+  );
+
+  useEffect(() => {
     if (status === "error") toast.error(message);
     if (status === "success") toast.success(message);
     if (status === "warning") toast.warning(message);
-  };
-
-  return showToast;
+  }, [message, status]);
 };

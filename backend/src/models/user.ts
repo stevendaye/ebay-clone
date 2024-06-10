@@ -29,22 +29,21 @@ export interface UserModel extends Document {
 const UserSchema = new mongoose.Schema({
   firstName: {
     type: String,
-    required: [true, "Please your first name is required"],
+    required: true,
   },
   lastName: {
     type: String,
-    required: [true, "Please, your last name is required"],
+    required: true,
   },
   email: {
     type: String,
-    required: [true, "Please your email is required"],
+    required: true,
     unique: true,
   },
   password: {
     type: String,
-    required: [true, "Please, your password is required"],
-    minLength: [4, "Please, password should be greater than 4 characters"],
-    select: false,
+    required: true,
+    minLength: 6,
   },
   phoneNumber: {
     type: Number,
@@ -88,11 +87,11 @@ const UserSchema = new mongoose.Schema({
 });
 
 UserSchema.pre("save", async function (next) {
-  if (!this.isModified("password")) {
-    next();
+  if (this.isModified("password")) {
+    this.password = await bcrypt.hash(this.password, 10);
   }
 
-  this.password = await bcrypt.hash(this.password, 10);
+  next();
 });
 
 UserSchema.methods.getJwtToken = function () {
@@ -101,9 +100,16 @@ UserSchema.methods.getJwtToken = function () {
   });
 };
 
-UserSchema.methods.comparePassword = async function (loginPassword: string) {
-  return await bcrypt.compare(loginPassword, this.password);
+UserSchema.methods.comparePassword = async function (password: string) {
+  return await bcrypt.compare(password, this.password);
 };
+
+UserSchema.set("toJSON", {
+  transform: (doc, ret, options) => {
+    delete ret.password;
+    return ret;
+  },
+});
 
 const User = mongoose.model<UserModel>("User", UserSchema);
 

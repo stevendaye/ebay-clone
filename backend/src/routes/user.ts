@@ -11,16 +11,16 @@ const userRoutes = (app: Express) => {
   //@desc sign up new user
   router.post(
     config.routes.user.signup,
+    upload.single("avatar"),
     [
       check("firstName", "Your first name is required").not().isEmpty(),
       check("lastName", "Your last name is required").not().isEmpty(),
-      check("email", "Please provide a valid email address").isEmail(),
-      check("password", "Please provide your password").isLength({
+      check("email", "Provide a valid email address").isEmail(),
+      check("password", "Provide a password of 6 charcter minimun").isLength({
         min: 6,
       }),
     ],
-    upload.single("avatar"),
-    user.signUp
+    user.signup
   );
 
   //@desc activate new account
@@ -33,12 +33,12 @@ const userRoutes = (app: Express) => {
   router.post(
     config.routes.user.signin,
     [
-      check("email", "Please provide a valid email address").isEmail(),
-      check("password", "Please provide your password").isLength({
+      check("email", "Provide a valid email address").isEmail(),
+      check("password", "Provide your current password").isLength({
         min: 6,
       }),
     ],
-    user.signIn
+    user.signin
   );
 
   app.use(config.routes.api, router);
