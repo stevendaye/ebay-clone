@@ -1,8 +1,9 @@
 import { Link, useLocation } from "react-router-dom";
 import routes from "../../routes";
 import pngEbay from "../../assets/images/ebay.png";
+import React from "react";
 
-export const Header = () => {
+export const Header: React.FC = () => {
   const { pathname } = useLocation();
   const isSignupPage = pathname === routes.signup;
   const isActivationPage = pathname.includes(routes.activationLink);

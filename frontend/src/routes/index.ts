@@ -4,6 +4,12 @@ export default {
   signup: "/signup",
   forgotPassword: "/forgot-password",
   activationLink: "/activate-account",
+  help: "/help",
+  deals: "/deals",
+  shipto: "/ship-to",
+  sell: "/sell",
+  contact: "/contact",
+  promo: "/promo",
   api: {
     signup: "/api/user/signup",
     login: "/api/user/signin",

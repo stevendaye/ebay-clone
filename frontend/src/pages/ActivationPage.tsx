@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useMutation } from "react-query";
 import { Link, useParams } from "react-router-dom";
 import * as api from "../utils/api";
@@ -11,7 +11,7 @@ import { AppDispatch, AppState } from "../redux/store";
 import { PulseLoader } from "react-spinners";
 import routes from "../routes";
 
-const ActivationPage = () => {
+const ActivationPage: React.FC = () => {
   const { token } = useParams();
 
   const dispatch = useDispatch<AppDispatch>();

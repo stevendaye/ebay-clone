@@ -1,3 +1,4 @@
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { useQuery } from "react-query";
 import { useDispatch } from "react-redux";
@@ -14,7 +15,7 @@ import * as api from "./utils/api";
 import { setLoadUserError, setLoadUserSuccess } from "./redux/actions/auth";
 import { AxiosError } from "./components/Signup/Signup";
 
-const App = () => {
+const App: React.FC = () => {
   const dispatch = useDispatch();
 
   useQuery("validateToken", api.validateToken, {
