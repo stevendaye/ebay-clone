@@ -2,13 +2,13 @@ import { Request, Response, NextFunction } from "express";
 import path from "path";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import fs from "fs";
-import User, { UserModel } from "../models/user";
+import User from "../models/user";
 import ErrorHandler from "../utils/ErrorHandler";
 import sendEmail from "../utils/sendEmail";
 import sendToken from "../utils/jwtToken";
 import { validationResult } from "express-validator";
 
-export type BaseUser = {
+export type UserReqProps = {
   firstName: string;
   lastName: string;
   email: string;
@@ -16,11 +16,9 @@ export type BaseUser = {
   avatar: string;
 };
 
-export type UserReq = BaseUser;
+export interface UserPayload extends JwtPayload, UserReqProps {}
 
-export interface UserPayload extends JwtPayload, BaseUser {}
-
-const createActivationToken = (user: UserReq) => {
+const createActivationToken = (user: UserReqProps) => {
   return jwt.sign(user, process.env.JWT_SECRET_KEY as string, {
     expiresIn: process.env.JWT_EXPIRATION_DATE,
   });
@@ -63,7 +61,7 @@ export default {
       );
 
     const fileURL = path.join(filename);
-    const body: UserReq = {
+    const body: UserReqProps = {
       firstName,
       lastName,
       email,
