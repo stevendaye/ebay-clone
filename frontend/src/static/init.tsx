@@ -1,39 +1,45 @@
-import { BiCategory } from "react-icons/bi";
-import { GiClothJar } from "react-icons/gi";
-import { GiCurlyMask } from "react-icons/gi";
-import { PiBabyCarriage } from "react-icons/pi";
-import { PiBooks } from "react-icons/pi";
+import { BiCategory, BiCameraMovie, BiPalette } from "react-icons/bi";
+import {
+  GiClothJar,
+  GiGemChain,
+  GiCurlyMask,
+  GiGardeningShears,
+  GiMirrorMirror,
+  GiPaintedPottery,
+  GiConsoleController,
+} from "react-icons/gi";
+import {
+  PiBabyCarriage,
+  PiStampLight,
+  PiShirtFoldedThin,
+  PiCoinsLight,
+  PiBooks,
+  PiPianoKeys,
+  PiPawPrintLight,
+  PiGiftLight,
+} from "react-icons/pi";
 import { GrBusinessService } from "react-icons/gr";
 import { IoCameraOutline } from "react-icons/io5";
-import { HiOutlineDevicePhoneMobile } from "react-icons/hi2";
-import { PiShirtFoldedThin } from "react-icons/pi";
-import { PiCoinsLight } from "react-icons/pi";
+import {
+  HiOutlineDevicePhoneMobile,
+  HiComputerDesktop,
+  HiOutlineTicket,
+  HiOutlinePaintBrush,
+} from "react-icons/hi2";
 import { ImDrawer } from "react-icons/im";
-import { HiComputerDesktop } from "react-icons/hi2";
-import { TbFridge } from "react-icons/tb";
-import { HiOutlinePaintBrush } from "react-icons/hi2";
-import { RiBearSmileLine } from "react-icons/ri";
-import { BiCameraMovie } from "react-icons/bi";
+import { TbFridge, TbBuildingEstate, TbHorseToy } from "react-icons/tb";
+import {
+  RiBearSmileLine,
+  RiMovie2Line,
+  RiCustomerService2Line,
+} from "react-icons/ri";
 import { LiaCarSideSolid } from "react-icons/lia";
-import { RiMovie2Line } from "react-icons/ri";
-import { GiMirrorMirror } from "react-icons/gi";
-import { PiGiftLight } from "react-icons/pi";
-import { GiGardeningShears } from "react-icons/gi";
-import { GiGemChain } from "react-icons/gi";
 import { BsFileMusic } from "react-icons/bs";
-import { PiPianoKeys } from "react-icons/pi";
-import { PiPawPrintLight } from "react-icons/pi";
-import { GiPaintedPottery } from "react-icons/gi";
-import { TbBuildingEstate } from "react-icons/tb";
-import { RiCustomerService2Line } from "react-icons/ri";
-import { MdOutlineSportsTennis } from "react-icons/md";
-import { MdOutlineSportsRugby } from "react-icons/md";
-import { PiStampLight } from "react-icons/pi";
-import { HiOutlineTicket } from "react-icons/hi2";
-import { TbHorseToy } from "react-icons/tb";
-import { MdOutlineTravelExplore } from "react-icons/md";
-import { GiConsoleController } from "react-icons/gi";
-import { BiPalette } from "react-icons/bi";
+import {
+  MdOutlineSportsTennis,
+  MdOutlineSportsRugby,
+  MdOutlineTravelExplore,
+} from "react-icons/md";
 
 // Swiper Images
 import watchpng from "../assets/images/watch.png";
@@ -154,7 +160,7 @@ export const categoriesNav = [
   "Electronics",
   "Motors",
   "Fashion",
-  "Collectibles and Arts",
+  "Collectibles & Arts",
   "Sports",
   "Health & Beauty",
   "Industrial Equipment",
@@ -496,7 +502,7 @@ export const categoriesList: OptionType[] = [
 export const categoriesDropdown = [
   {
     id: "CD1",
-    main: "Collectibles & Arts",
+    title: "Collectibles & Arts",
     subs: [
       { id: "CDST1", subtitle: "Collectibles" },
       { id: "CDST2", subtitle: "Antiques" },
@@ -506,7 +512,7 @@ export const categoriesDropdown = [
   },
   {
     id: "CD2",
-    main: "Electronices",
+    title: "Electronics",
     subs: [
       { id: "CDST5", subtitle: "Computers & Tablets" },
       { id: "CDST6", subtitle: "Cameras & Photo" },
@@ -516,7 +522,7 @@ export const categoriesDropdown = [
   },
   {
     id: "CD3",
-    main: "Fashion",
+    title: "Fashion",
     subs: [
       { id: "CDST9", subtitle: "Women" },
       { id: "CDST10", subtitle: "Men" },
@@ -526,7 +532,7 @@ export const categoriesDropdown = [
   },
   {
     id: "CD4",
-    main: "Home & Garden",
+    title: "Home & Garden",
     subs: [
       { id: "CDST13", subtitle: "Yard, Garden & Outdoor" },
       { id: "CDST14", subtitle: "Crafts" },
@@ -536,17 +542,17 @@ export const categoriesDropdown = [
   },
   {
     id: "CD5",
-    main: "Auto Parts & Accessories",
+    title: "Auto Parts & Accessories",
     subs: [
       { id: "CDST17", subtitle: "GPS & Security Devices" },
       { id: "CDST18", subtitle: "Radar & Laser Detector" },
       { id: "CDST19", subtitle: "Care & Detailing" },
-      { id: "CDST20", subtitle: "Scooter Parts & Accessories" },
+      { id: "CDST20", subtitle: "Boats Parts & Accessories" },
     ],
   },
   {
     id: "CD6",
-    main: "Musical Instruments & Gear",
+    title: "Musical Instruments & Gear",
     subs: [
       { id: "CDST21", subtitle: "Guitar" },
       { id: "CDST22", subtitle: "Pro Audio Equipment" },
@@ -556,7 +562,7 @@ export const categoriesDropdown = [
   },
   {
     id: "CD7",
-    main: "Sporting Goods",
+    title: "Sporting Goods",
     subs: [
       { id: "CDST25", subtitle: "Outdoor Sport" },
       { id: "CDST26", subtitle: "Tean Sports" },
@@ -566,7 +572,7 @@ export const categoriesDropdown = [
   },
   {
     id: "CD8",
-    main: "Toys & Hobbies",
+    title: "Toys & Hobbies",
     subs: [
       { id: "CDST29", subtitle: "Radio Control" },
       { id: "CDST30", subtitle: "Kid Toys" },
@@ -576,7 +582,7 @@ export const categoriesDropdown = [
   },
   {
     id: "CD9",
-    main: "Other Categories",
+    title: "Other Categories",
     subs: [
       { id: "CDST33", subtitle: "Video Games & Consoles" },
       { id: "CDST34", subtitle: "Health & Beauty" },
@@ -678,7 +684,7 @@ export const popularCategories = [
 export const products = [
   {
     id: 1,
-    category: "Computers and Laptops",
+    category: "Computers & Tablets",
     name: "MacBook pro M2 chipset 256gb ssd 8gb ram space-gray color with apple 1 year warranty",
     description:
       "Apple 2023 MacBook Pro Laptop M3 Pro chip with 12-core CPU, 18-core GPU: 16.2-inch Liquid Retina XDR Display, 36GB Unified Memory, 512GB SSD Storage. Works with iPhone/iPad; Space Black.",
@@ -708,7 +714,7 @@ export const products = [
   },
   {
     id: 2,
-    category: "Mobile and Tablets",
+    category: "Cell phones & Accessories",
     name: "SAMSUNG Galaxy S24 Ultra Cell Phone, 512GB AI Smartphone, Unlocked Android, 50MP Zoom Camera, Long Battery Life, S Pen, US Version, 2024, Titanium Violet",
     description:
       "REAL EASY, REAL-TIME TRANSLATIONS: Speak foreign languages on the spot with Live Translate²; Unlock the power of convenient communication with near real-time voice translations, right through your Samsung Phone app.",
@@ -769,7 +775,7 @@ export const products = [
   },
   {
     id: 4,
-    category: "Watch & Accessories",
+    category: "Jewelries & Watches",
     name: "New Fashionable Watch for men 2023 with multipleSAMSUNG Galaxy Watch 6 Classic 43mm Bluetooth Smartwatch, Rotating Bezel, Fitness Tracker, Personalized HR Zones, Advanced Sleep Coaching, Heart Monitor, BIA Sensor, Health Insights, US Version, Black",
     description:
       "A SMART WATCH WITH CLASSIC STYLE: Galaxy Watch6 Classic features a timeless, iconic look and a bezel that just clicks with your style; It not only looks great, but it also rotates to give you easy access to all your apps",
@@ -801,8 +807,8 @@ export const products = [
   },
   {
     id: 5,
-    category: "Footwear & AccessoriesReebok women's Club C Extra Sneaker",
-    name: "New Trend shoes for gents with all sizes",
+    category: "Men",
+    name: "Men & Women New Trend shoes with all sizes along with various colors",
     description:
       "Breathable Comfort for Athletes: Our women's tennis shoes feature a lightweight and breathable design that keeps your feet cool and comfortable during intense matches while providing the perfect balance of support and flexibility for optimal performance. Enhanced Stability & Support: These comfortable shoes for women are engineered to provide superior stability and support; A durable outsole and underfoot cushioning offer excellent shock absorption.",
     condition: "Refurbished Product",
@@ -832,7 +838,7 @@ export const products = [
   },
   {
     id: 6,
-    category: "Music and Gaming",
+    category: "Pro Audio Equipment",
     name: "Beats Solo3 Wireless On-Ear Headphones - Apple W1 Headphone Chip, Class 1 Bluetooth, 40 Hours of Listening Time, Built-in Microphone - Silver",
     description:
       "High-performance wireless Bluetooth headphones Features the Apple W1 chip and Class 1 wireless Bluetooth connectivity With up to 40 hours of battery life, Beats Solo3 wireless is your perfect everyday headphone Compatible with iOS and Android devices With Fast Fuel, 5 minutes of charging gives you 3 hours of playback when battery is low Adjustable fit with comfort-cushioned ear cups made for everyday use Sleek, streamlined design that’s durable and foldable to go everywhere you do Take calls, control your music, and activate Siri with the multifunction on-ear controls The award-winning sound and design you’ve come to love from Beats, with premium playback with fine-tuned acoustics that maximize clarity, breadth, and balance What's in the box - Beats Solo3 Wireless headphones, Carrying case, 3.5mm RemoteTalk cable, Universal USB charging cable (USB-A to USB Micro-B), Quick Start Guide, Warranty Card (USB power adapter sold separately)",
@@ -872,7 +878,7 @@ export const products = [
   },
   {
     id: 7,
-    category: "Watch & Accessories",
+    category: "Jewelries & Watches",
     name: "New Fashionable Watch for men 2023 with multiple colors",
     description:
       "Product details are a crucial part of any eCommerce website or online marketplace. These details help the potential customers to make an informed decision about the product they are interested in buying. A well-written product description can also be a powerful marketing tool that can help to increase sales.Product details typically include information about the product's features, specifications, dimensions, weight, materials, and other relevant information that can help customers to understand the product better. The product details section should also include high-quality images and videos of the product, as well as customer reviews and ratings.",
@@ -903,7 +909,7 @@ export const products = [
   },
   {
     id: 8,
-    category: "Home Appliance",
+    category: "Home Improvement",
     name: "SAMSUNG 21.5 Cu Ft Side By Side Counter Depth Smart Refrigerator w/ 21.5 Touch Screen Family Hub, In-Door Ice Maker, Energy Star Certified, RF22t5561SR/AA, Fingerprint Resistant Stainless Steel",
     description:
       "BUILT IN LOOK W/ COUNTER DEPTH: Smooth and streamlined exterior design features beautiful flat doors, a minimal display dispenser, and easy to open recessed handles that blend beautifully into your cabinetry, adding function and style to your kitchen FAMILY HUB: Connect to your family and home, whenever and wherever; Family Hub lets you see inside your refrigerator, manage your family’s calendars, stream music, see who’s at the front door and much more, right from your fridge FINGERPRINT RESISTANT FINISH: A finish that withstands everyday smudges, so you spend less time cleaning. ALL-AROUND COOLING & IN DOOR ICE MAKER: Multi-vent technology keeps items on every shelf evenly cooled; High capacity indoor ice maker saves shelf space for your frozen foods MINIMAL DISPLAY DISPENSER: Integrated dispenser with touch display provides easy access to water, cubed or crushed ice",
@@ -943,7 +949,7 @@ export const products = [
   },
   {
     id: 9,
-    category: "Mobile and Tablets",
+    category: "Computers & Tablets",
     name: "Iphone 14 pro max 256 gb ssd and 8 gb ram silver colour",
     description:
       "Product details are a crucial part of any eCommerce website or online marketplace. These details help the potential customers to make an informed decision about the product they are interested in buying. A well-written product description can also be a powerful marketing tool that can help to increase sales.Product details typically include information about the product's features, specifications, dimensions, weight, materials, and other relevant information that can help customers to understand the product better. The product details section should also include high-quality images and videos of the product, as well as customer reviews and ratings.",
@@ -974,7 +980,7 @@ export const products = [
   },
   {
     id: 10,
-    category: "Computer & Electronics",
+    category: "Computers & Tablets",
     name: "SAMSUNG 14 Galaxy Book4 Pro Laptop PC Computer, Intel Core 7 Ultra Processor 512GB, 3K AMOLED (2880 x 1800) Touchscreen, Advanced Security, 2024 Model, NP940XGK-KG1US, Moonstone Gray",
     description:
       "POWER FOR YOUR MOST PRODUCTIVE DAYS: Breeze through every task with a powerful Intel processor; Intel Core Ultra 7 processor 155H; Enhanced with AI Intel ARC Graphics POWERFUL. LIGHT. AMAZINGLY SLIM: Take premium power on the go with an ultralight and amazingly slim laptop; 16” Thickness: 12.5mm, Weight: 3.44 lbs; 14 Thickness: 11.6mm, Weight: 2.71 lbs BRACE YOURSELF FOR THE ULTIMATE SCREEN EXPERIENCE: Tackle what you need to do then kick back with what you love to do on a spacious 14 or 16 Dynamic AMOLED 2X touchscreen that's bright, crisp and vivid A PACKED BATTERY FOR YOUR STACKED DAYS: Achieve your goals and more with a long-lasting battery that goes the distance; 16: 76Wh (Typical) 65W Adapter; 14: 63Wh (Typical) 65W Adapter.",
@@ -1014,58 +1020,95 @@ export const products = [
   },
 ];
 
-export const footerProductLinks = [
+export const footerLinks = [
   {
-    name: "About us",
-    link: "/about",
+    id: "FLS1",
+    title: "Buy",
+    subs: [
+      { id: "SFLS1", subTitle: "Registration" },
+      { id: "SFLS2", subTitle: "eBay Money Back Guarantee" },
+      { id: "SFLS3", subTitle: "Bidding & buying help" },
+      { id: "SFLS4", subTitle: "Stores" },
+    ],
   },
   {
-    name: "Careers",
-    link: "/carrers",
+    id: "FLS2",
+    title: "Sell",
+    subs: [
+      { id: "SFLS5", subTitle: "Start selling" },
+      { id: "SFLS6", subTitle: "Learn to sell" },
+      { id: "SFLS7", subTitle: "Affiliates" },
+    ],
   },
   {
-    name: "Store Locations",
+    id: "FLS3",
+    title: "Tools & Apps",
+    subs: [
+      { id: "SFLS8", subTitle: "Developers" },
+      { id: "SFLS9", subTitle: "Security center" },
+      { id: "SFLS10", subTitle: "Site map" },
+    ],
   },
   {
-    name: "Our Blog",
+    id: "FLS4",
+    title: "Stay Connected",
+    subs: [
+      { id: "SFLS11", subTitle: "eBay's Blogs" },
+      { id: "SFLS12", subTitle: "Facebook" },
+      { id: "SFLS13", subTitle: "Twitter" },
+    ],
   },
   {
-    name: "Reviews",
+    id: "FLS5",
+    title: "About Ebay",
+    subs: [
+      { id: "SFLS14", subTitle: "Company info" },
+      { id: "SFLS27", subTitle: "News" },
+      { id: "SFLS16", subTitle: "Investors" },
+      { id: "SFLS26", subTitle: "Careers" },
+      { id: "SFLS17", subTitle: "Government relations" },
+      { id: "SFLS18", subTitle: "Advertise with us" },
+      { id: "SFLS19", subTitle: "Policies" },
+      { id: "SFLS20", subTitle: "Verified Rights Owner (VeRO) Program" },
+    ],
+  },
+  {
+    id: "FLS6",
+    title: "Help & Contact",
+    subs: [
+      { id: "SFLS21", subTitle: "Seller Information Center" },
+      { id: "SFLS22", subTitle: "Contact us" },
+    ],
+  },
+  {
+    id: "FLS7",
+    title: "Community",
+    subs: [
+      { id: "SFLS23", subTitle: "Announcements" },
+      { id: "SFLS24", subTitle: "Discussion boards" },
+      { id: "SFLS25", subTitle: "eBay Giving Works" },
+    ],
   },
 ];
 
-export const footercompanyLinks = [
-  {
-    name: "Game & Video",
-  },
-  {
-    name: "Phone &Tablets",
-  },
-  {
-    name: "Computers & Laptop",
-  },
-  {
-    name: "Sport Watches",
-  },
-  {
-    name: "Events",
-  },
+export const footerCopyright = [
+  "Accessibility",
+  "User Agreement",
+  "Privacy",
+  "Payments Terms of Use",
+  "Cookies",
+  "CA Privacy Notice",
+  "Your Privacy Choices",
 ];
 
-export const footerSupportLinks = [
-  {
-    name: "FAQ",
-  },
-  {
-    name: "Reviews",
-  },
-  {
-    name: "Contact Us",
-  },
-  {
-    name: "Shipping",
-  },
-  {
-    name: "Live chat",
-  },
+export const AuthMenuLinks = [
+  "Messages",
+  "Summary",
+  "Recently Viewed",
+  "Bid/Offers",
+  "Purchase History",
+  "Buy Again",
+  "Selling",
+  "Saved Searches",
+  "Saved Sellers",
 ];

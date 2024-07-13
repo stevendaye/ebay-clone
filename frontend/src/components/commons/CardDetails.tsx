@@ -4,6 +4,8 @@ import { Product } from "../../layouts/Header";
 import { RxCross1 } from "react-icons/rx";
 import { FiMessageSquare } from "react-icons/fi";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { Link } from "react-router-dom";
+import routes from "../../routes";
 
 type CardDetailsProps = {
   setQuickView: (val: boolean) => void;
@@ -29,8 +31,8 @@ export const CardDetails: React.FC<CardDetailsProps> = ({
   const handleAddTocart = () => {
     console.log("Added to Cart");
   };
-  const handleAddToWishlist = () => {
-    console.log("Added to Wishlist");
+  const handleAddToWatchlist = () => {
+    console.log("Added to Watchlist");
   };
 
   return (
@@ -85,9 +87,9 @@ export const CardDetails: React.FC<CardDetailsProps> = ({
 
                 <button
                   className="bg-transparent text-xs text-black flex items-center gap-2 underline"
-                  onClick={handleAddToWishlist}
+                  onClick={handleAddToWatchlist}
                 >
-                  Add to wishlist
+                  Add to watchlist
                 </button>
               </div>
 
@@ -107,6 +109,12 @@ export const CardDetails: React.FC<CardDetailsProps> = ({
               </div>
 
               <p className="text-sm line-clamp-6">{data.description}</p>
+              <Link
+                to={`${routes.product}/${data.id}`}
+                className="underline text-sm"
+              >
+                View full details
+              </Link>
 
               <div className="flex flex-col gap-4 text-xs mt-auto">
                 <div className="flex items-center ml-auto font-bold">

@@ -1,6 +1,17 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import routes from "../../routes";
+import { sanitizeString } from "../../utils";
 
 export const DiscountBarner: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleDiscountLink = () => {
+    navigate(
+      `${routes.products}?category=${sanitizeString("Jewelry & Watches")}`
+    );
+  };
+
   return (
     <section className="w-full p-4 bg-slate-100 flex justify-between rounded-xl mt-7">
       <div className="flex flex-col">
@@ -16,6 +27,7 @@ export const DiscountBarner: React.FC = () => {
       <button
         className="w-44 h-10 rounded-full border-solid border-[1px] border-black
         text-black mt-3 hover:bg-black hover:text-white ease-in-out"
+        onClick={handleDiscountLink}
       >
         Code: BOLDER07
       </button>

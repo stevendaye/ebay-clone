@@ -5,6 +5,7 @@ import { PiHeart } from "react-icons/pi";
 import { Link } from "react-router-dom";
 import { CardDetails } from "./CardDetails";
 import { Product } from "../../layouts/Header";
+import routes from "../../routes";
 
 type CardProps = {
   product: Product;
@@ -15,26 +16,53 @@ export const Card: React.FC<CardProps> = ({ product, withCarouselList }) => {
   const [like, setLike] = useState<boolean>(false);
   const [quickView, setQuickView] = useState<boolean>(false);
 
-  const handleAddToCart = (product: Product) => {
+  const disableDefaultLinkAction = (
+    event: React.MouseEvent<SVGElement, MouseEvent>
+  ) => {
+    event.stopPropagation();
+    event.preventDefault();
+  };
+
+  const handleAddToCart = (
+    e: React.MouseEvent<SVGElement, MouseEvent>,
+    product: Product
+  ) => {
+    disableDefaultLinkAction(e);
     console.log(`Added to cart ${product.name}`);
+  };
+
+  const handleQuickView = (
+    e: React.MouseEvent<SVGElement, MouseEvent>,
+    value: boolean
+  ) => {
+    disableDefaultLinkAction(e);
+    setQuickView(value);
+  };
+
+  const handleLike = (e: React.MouseEvent<SVGElement, MouseEvent>) => {
+    disableDefaultLinkAction(e);
+    setLike(!like);
   };
 
   return (
     <>
-      <Link to={"#"} className="flex flex-col gap-4 w-full relative">
-        <span className="absolute right-2 top-2 bg-gray-200 rounded-full p-2 cursor-pointer">
+      <Link
+        to={`${routes.product}/${product.id}`}
+        className="flex flex-col gap-4 w-full relative"
+      >
+        <span className="absolute right-2 top-2 bg-gray-200 rounded-full p-1 cursor-pointer">
           {like ? (
             <FcLike
-              size={17}
-              title="Remove from wishlist"
-              onClick={() => setLike(!like)}
+              size={20}
+              title="Remove from watchlist"
+              onClick={(e) => handleLike(e)}
             />
           ) : (
             <PiHeart
               className="text-black"
-              size={17}
-              title="Add to wishlist"
-              onClick={() => setLike(!like)}
+              size={20}
+              title="Add to watchlist"
+              onClick={(e) => handleLike(e)}
             />
           )}
         </span>
@@ -65,13 +93,13 @@ export const Card: React.FC<CardProps> = ({ product, withCarouselList }) => {
             <AiOutlineShoppingCart
               size={25}
               title="Add to cart"
-              onClick={() => handleAddToCart(product)}
+              onClick={(e) => handleAddToCart(e, product)}
             />
             {!withCarouselList && (
               <AiOutlineEye
                 size={25}
                 title="Quick view"
-                onClick={() => setQuickView(!quickView)}
+                onClick={(e) => handleQuickView(e, !quickView)}
               />
             )}
           </div>

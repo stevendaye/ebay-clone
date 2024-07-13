@@ -3,7 +3,7 @@ import routes from "../../routes";
 import pngEbay from "../../assets/images/ebay.png";
 import React from "react";
 
-export const Header: React.FC = () => {
+export const AuthHeader: React.FC = () => {
   const { pathname } = useLocation();
   const isSignupPage = pathname === routes.signup;
   const isActivationPage = pathname.includes(routes.activationLink);
@@ -15,7 +15,7 @@ export const Header: React.FC = () => {
       }`}
     >
       <Link to={routes.home}>
-        <img src={pngEbay} alt="Ebay" width={"100px"} height={"auto"} />
+        <img src={pngEbay} alt="Ebay" width={"125px"} height={"auto"} />
       </Link>
 
       {isSignupPage && (

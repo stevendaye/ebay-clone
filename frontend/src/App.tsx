@@ -7,6 +7,8 @@ import {
   HomePage,
   LoginPage,
   NotFoundPage,
+  ProductDetailsPage,
+  ProductsPage,
   SignupPage,
 } from "./pages";
 import routes from "./routes";
@@ -26,7 +28,7 @@ const App: React.FC = () => {
       const error = err as AxiosError;
       dispatch(
         setLoadUserError(
-          error?.response?.data?.message ||
+          error?.response?.data?.message ??
             "You don't have access to perform this action"
         )
       );
@@ -43,6 +45,11 @@ const App: React.FC = () => {
         <Route
           path={`${routes.activationLink}/:token`}
           element={<ActivationPage />}
+        />
+        <Route path={routes.products} element={<ProductsPage />} />
+        <Route
+          path={`${routes.product}/:productId`}
+          element={<ProductDetailsPage />}
         />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

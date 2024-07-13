@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useMutation } from "react-query";
 import { Link, useParams } from "react-router-dom";
 import * as api from "../utils/api";
-import { Header } from "../components/Auth";
+import { AuthHeader } from "../components/Auth";
 import { useDispatch, useSelector } from "react-redux";
 import { setSignupError, setSignupSuccess } from "../redux/actions/auth";
 import { AxiosError } from "../components/Signup/Signup";
@@ -35,7 +35,7 @@ const ActivationPage: React.FC = () => {
         setToast({
           status: "error",
           message:
-            error?.response?.data?.message ||
+            error?.response?.data?.message ??
             "Your account can't ve verify at the moment",
           error: true,
         })
@@ -52,7 +52,7 @@ const ActivationPage: React.FC = () => {
 
   return (
     <div className=" relative min-h-screen">
-      <Header />
+      <AuthHeader />
 
       <div className="w-full h-[100vh] flex flex-col justify-center items-center text-gray-800 text-sm font-bold">
         <PulseLoader

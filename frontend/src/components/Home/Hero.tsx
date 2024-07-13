@@ -6,14 +6,17 @@ import { FaArrowRightLong, FaCirclePause, FaCirclePlay } from "react-icons/fa6";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import routes from "../../routes";
 import {
   highlightProductsRoad,
   highlightProductsLuxury,
 } from "../../static/init";
+import { sanitizeString } from "../../utils";
 
 export const Hero: React.FC = () => {
+  const navigate = useNavigate();
+
   const swiperRef = useRef<SwiperClass | null>(null);
   const [play, setPlay] = useState<boolean>(true);
 
@@ -28,6 +31,10 @@ export const Hero: React.FC = () => {
   useEffect(() => {
     play ? handleResumeSlide() : handleStopSlide();
   }, [play]);
+
+  const handleHeroLink = (pageURL: string) => {
+    navigate(`${routes.products}?category=${sanitizeString(pageURL)}`);
+  };
 
   return (
     <section className="w-full h-[22rem] rounded-xl overflow-hidden">
@@ -62,6 +69,7 @@ export const Hero: React.FC = () => {
               <button
                 className="w-36 rounded-full py-2 px-4 border-solid border-[1px] border-blue-950
               text-blue-950 mt-3 hover:bg-blue-950 hover:text-white ease-in-out"
+                onClick={() => handleHeroLink("Boats Parts & Accessories")}
               >
                 Hop on board
               </button>
@@ -84,7 +92,8 @@ export const Hero: React.FC = () => {
                 </p>
                 <button
                   className=" w-44 rounded-full py-2 px-4 border-solid border-[1px] border-black
-              text-black mt-3 hover:bg-black hover:text-white ease-in-out"
+                text-black mt-3 hover:bg-black hover:text-white ease-in-out"
+                  onClick={() => handleHeroLink("Jewelry & Watches")}
                 >
                   Code: BOLDER07
                 </button>
@@ -100,7 +109,9 @@ export const Hero: React.FC = () => {
               <div className="flex gap-20 justify-center items-center flex-1 h-full mt-[-5px]">
                 {highlightProductsLuxury.map((h_prod_lux) => (
                   <Link
-                    to={"#"}
+                    to={`${routes.products}?category=${sanitizeString(
+                      h_prod_lux.title
+                    )}`}
                     key={h_prod_lux.id}
                     className="flex flex-col items-center"
                   >
@@ -131,7 +142,8 @@ export const Hero: React.FC = () => {
               </p>
               <button
                 className=" w-44 rounded-full py-2 px-4 border-solid border-[1px] border-black
-              text-black mt-3 hover:bg-black hover:text-white ease-in-out"
+                text-black mt-3 hover:bg-black hover:text-white ease-in-out"
+                onClick={() => handleHeroLink("Luxurious Acessories")}
               >
                 Code: BOLDER07
               </button>
@@ -162,7 +174,8 @@ export const Hero: React.FC = () => {
                 </p>
                 <button
                   className=" w-28 rounded-full py-2 px-4 border-solid border-[1px] border-blue-950
-              text-blue-950 mt-3 hover:bg-blue-950 hover:text-white ease-in-out"
+                  text-blue-950 mt-3 hover:bg-blue-950 hover:text-white ease-in-out"
+                  onClick={() => handleHeroLink("Car Parts & Acessories")}
                 >
                   Shop now
                 </button>
@@ -171,7 +184,9 @@ export const Hero: React.FC = () => {
               <div className="flex gap-20 justify-center items-center flex-1 h-full mt-[-5px]">
                 {highlightProductsRoad.map((h_prod_road) => (
                   <Link
-                    to={"#"}
+                    to={`${routes.products}?category=${sanitizeString(
+                      h_prod_road.title
+                    )}`}
                     key={h_prod_road.id}
                     className="flex flex-col items-center"
                   >

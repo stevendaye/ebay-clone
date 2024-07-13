@@ -3,17 +3,24 @@ import { Product } from "../../layouts/Header";
 import { Countdown } from "../commons/Countdown";
 import styles from "../../styles";
 import StarRatings from "react-star-ratings";
+import { useNavigate } from "react-router-dom";
+import routes from "../../routes";
 
 type EventCardProps = {
   event: Product;
 };
 
 export const EventCard: React.FC<EventCardProps> = ({ event }) => {
+  const navigate = useNavigate();
   const [endDate, setEndDate] = useState<Date | null>(null);
 
-  const handleAddToCart = () => {};
+  const handleAddToCart = (name: string) => {
+    console.log(`Product ${name} added successfully to cart`);
+  };
 
-  const handleViewDetails = () => {};
+  const handleViewDetails = (eventId: string) => {
+    navigate(`${routes.product}/${eventId}`);
+  };
 
   useEffect(() => {
     const storedEndDate = localStorage.getItem("endDate");
@@ -69,13 +76,13 @@ export const EventCard: React.FC<EventCardProps> = ({ event }) => {
         <div className="mt-auto ml-auto flex gap-2 border-solid border-2">
           <button
             className="bg-black text-white text-sm rounded-md py-2 px-5 hover:underline"
-            onClick={handleViewDetails}
+            onClick={() => handleViewDetails(event.id.toString())}
           >
             View details
           </button>
           <button
             className="bg-black text-white text-sm rounded-md py-2 px-5 hover:underline"
-            onClick={handleAddToCart}
+            onClick={() => handleAddToCart(event.name)}
           >
             Add to cart
           </button>

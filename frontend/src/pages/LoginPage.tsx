@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 import routes from "../routes";
-import { Footer, Header } from "../components/Auth";
+import { AuthFooter, AuthHeader } from "../components/Auth";
 import { Signin } from "../components/Signin/Signin";
 
 export type LoginFormType = {
@@ -13,7 +13,7 @@ export type LoginFormType = {
 const LoginPage = () => {
   return (
     <div className="relative min-h-screen">
-      <Header />
+      <AuthHeader />
 
       <section className="mt-7 flex flex-col justify-center sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
@@ -29,7 +29,7 @@ const LoginPage = () => {
         <Signin />
       </section>
 
-      <Footer />
+      <AuthFooter />
     </div>
   );
 };

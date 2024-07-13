@@ -12,7 +12,7 @@ export const FeaturedProducts: React.FC = () => {
       </span>
 
       <CardGrid>
-        {products.slice(0, 4).map((product) => (
+        {products.slice(0, 5).map((product) => (
           <Card key={product.id} product={product} />
         ))}
       </CardGrid>

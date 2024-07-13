@@ -3,7 +3,7 @@ import React from "react";
 import styles from "../styles";
 import { Footer, Header } from "../layouts";
 import {
-  DefaultListing,
+  CarouselListing,
   DiscountBarner,
   DisplayBarner,
   Events,
@@ -26,7 +26,7 @@ const HomePage: React.FC = () => {
           <PopularCategories />
           <DisplayBarner />
           <Events />
-          <DefaultListing />
+          <CarouselListing />
         </div>
       </div>
       <Footer />

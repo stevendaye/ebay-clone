@@ -5,7 +5,7 @@ import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { products } from "../../static/init";
 import { Card } from "../commons/Card";
 
-export const DefaultListing: React.FC = () => {
+export const CarouselListing: React.FC = () => {
   const swiperRef = useRef<SwiperClass | null>(null);
 
   return (

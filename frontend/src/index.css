@@ -28,9 +28,17 @@
   }
 }
 
+* {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: MarketSansRegular, ui-serif, Georgia;
   background-color: white;
+}
+
+button {
+  font-family: "Helvetica Neue", Helvetica, Arial, Verdana, Sans-serif !important;
 }
 
 /* ##### Home ##### */

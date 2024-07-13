@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import { Footer, Header } from "../components/Auth";
+import { AuthFooter, AuthHeader } from "../components/Auth";
 import { LeftHandBarner } from "../components/Signup/LeftHandBarner";
 import { Avatar } from "../components/Signup/Avatar";
 import { AccountSwitch } from "../components/Signup/AccountSwitch";
@@ -45,7 +45,7 @@ const SignupPage = () => {
 
   return (
     <div className="relative min-h-screen">
-      <Header />
+      <AuthHeader />
 
       <section className="min-h-screen bg-white flex justify-center px-24 gap-10 max-2xl:px-10">
         <LeftHandBarner accountType={accountType} buyer={buyer} />
@@ -81,7 +81,7 @@ const SignupPage = () => {
         </div>
       </section>
 
-      <Footer />
+      <AuthFooter />
     </div>
   );
 };

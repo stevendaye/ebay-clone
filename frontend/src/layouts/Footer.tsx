@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "../styles";
+import { footerCopyright, footerLinks } from "../static/init";
+import { sanitizeString } from "../utils";
 
 const Footer = () => {
   return (
@@ -7,113 +9,139 @@ const Footer = () => {
       <div className={`${styles.section}`}>
         <div className="py-2 flex justify-between text-gray-500 text-xs">
           <section className="flex flex-col gap-2">
-            <p className="font-bold text-black">Buy</p>
-            <Link to={"#"} className="hover:underline">
-              Registration
-            </Link>
-            <Link to={"#"} className="hover:underline">
-              eBay Money Back Guarantee
-            </Link>
-            <Link to={"#"} className="hover:underline">
-              Bidding & buying help
-            </Link>
-            <Link to={"#"} className="hover:underline">
-              Stores
-            </Link>
+            {footerLinks.slice(0, 1).map((lnk) => (
+              <div key={lnk.id}>
+                <p className="font-bold text-black mb-2">{lnk.title}</p>
+
+                <div className="flex flex-col gap-2">
+                  {lnk.subs.map((subLnk) => (
+                    <Link
+                      key={subLnk.id}
+                      to={sanitizeString(subLnk.subTitle)}
+                      className="hover:underline"
+                    >
+                      {subLnk.subTitle}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ))}
           </section>
 
           <section className="flex flex-col gap-10">
-            <div className="flex flex-col gap-2">
-              <p className="font-bold text-black">Sell</p>
-              <Link to={"#"} className="hover:underline">
-                Start selling
-              </Link>
-              <Link to={"#"} className="hover:underline">
-                Learn to sell
-              </Link>
-              <Link to={"#"} className="hover:underline">
-                Affiliates
-              </Link>
-            </div>
+            {footerLinks.slice(1, 2).map((lnk) => (
+              <div key={lnk.id}>
+                <p className="font-bold text-black mb-2">{lnk.title}</p>
 
-            <div className="flex flex-col gap-2">
-              <p className="font-bold text-black">Tools & Apps</p>
-              <Link to={"#"} className="hover:underline">
-                Developers
-              </Link>
-              <Link to={"#"} className="hover:underline">
-                Security center
-              </Link>
-              <Link to={"#"} className="hover:underline">
-                Site map
-              </Link>
-            </div>
+                <div className="flex flex-col gap-2">
+                  {lnk.subs.map((subLnk) => (
+                    <Link
+                      key={subLnk.id}
+                      to={sanitizeString(subLnk.subTitle)}
+                      className="hover:underline"
+                    >
+                      {subLnk.subTitle}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ))}
+
+            {footerLinks.slice(2, 3).map((lnk) => (
+              <div key={lnk.id}>
+                <p className="font-bold text-black mb-2">{lnk.title}</p>
+
+                <div className="flex flex-col gap-2">
+                  {lnk.subs.map((subLnk) => (
+                    <Link
+                      key={subLnk.id}
+                      to={sanitizeString(subLnk.subTitle)}
+                      className="hover:underline"
+                    >
+                      {subLnk.subTitle}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ))}
           </section>
 
           <section className="flex flex-col gap-2">
-            <p className="font-bold text-black">Stay Connected</p>
-            <Link to={"#"} className="hover:underline">
-              eBay's Blogs
-            </Link>
-            <Link to={"#"} className="hover:underline">
-              Facebook
-            </Link>
-            <Link to={"#"} className="hover:underline">
-              Twitter
-            </Link>
+            {footerLinks.slice(3, 4).map((lnk) => (
+              <div key={lnk.id}>
+                <p className="font-bold text-black mb-2">{lnk.title}</p>
+
+                <div className="flex flex-col gap-2">
+                  {lnk.subs.map((subLnk) => (
+                    <Link
+                      key={subLnk.id}
+                      to={sanitizeString(subLnk.subTitle)}
+                      className="hover:underline"
+                    >
+                      {subLnk.subTitle}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ))}
           </section>
 
           <section className="flex flex-col gap-2">
-            <p className="font-bold text-black">About Ebay</p>
-            <Link to={"#"} className="hover:underline">
-              Company info
-            </Link>
-            <Link to={"#"} className="hover:underline">
-              News
-            </Link>
-            <Link to={"#"} className="hover:underline">
-              Investors
-            </Link>
-            <Link to={"#"} className="hover:underline">
-              Careers
-            </Link>
-            <Link to={"#"} className="hover:underline">
-              Government relations
-            </Link>
-            <Link to={"#"} className="hover:underline">
-              Advertise with us
-            </Link>
-            <Link to={"#"} className="hover:underline">
-              Policies
-            </Link>
-            <Link to={"#"} className="hover:underline">
-              Verified Rights Owner (VeRO) Program
-            </Link>
+            {footerLinks.slice(4, 5).map((lnk) => (
+              <div key={lnk.id}>
+                <p className="font-bold text-black mb-2">{lnk.title}</p>
+
+                <div className="flex flex-col gap-2">
+                  {lnk.subs.map((subLnk) => (
+                    <Link
+                      key={subLnk.id}
+                      to={sanitizeString(subLnk.subTitle)}
+                      className="hover:underline"
+                    >
+                      {subLnk.subTitle}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ))}
           </section>
 
           <section className="flex flex-col gap-10">
-            <div className="flex flex-col gap-2">
-              <p className="font-bold text-black">Help & Contact</p>
-              <Link to={"#"} className="hover:underline">
-                Seller Information Center
-              </Link>
-              <Link to={"#"} className="hover:underline">
-                Contact us
-              </Link>
-            </div>
+            {footerLinks.slice(5, 6).map((lnk) => (
+              <div key={lnk.id}>
+                <p className="font-bold text-black mb-2">{lnk.title}</p>
 
-            <div className="flex flex-col gap-2">
-              <p className="font-bold text-black">Community</p>
-              <Link to={"#"} className="hover:underline">
-                Announcements
-              </Link>
-              <Link to={"#"} className="hover:underline">
-                Discussion boards
-              </Link>
-              <Link to={"#"} className="hover:underline">
-                eBay Giving Works
-              </Link>
-            </div>
+                <div className="flex flex-col gap-2">
+                  {lnk.subs.map((subLnk) => (
+                    <Link
+                      key={subLnk.id}
+                      to={sanitizeString(subLnk.subTitle)}
+                      className="hover:underline"
+                    >
+                      {subLnk.subTitle}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ))}
+
+            {footerLinks.slice(6, 7).map((lnk) => (
+              <div key={lnk.id}>
+                <p className="font-bold text-black mb-2">{lnk.title}</p>
+
+                <div className="flex flex-col gap-2">
+                  {lnk.subs.map((subLnk) => (
+                    <Link
+                      key={subLnk.id}
+                      to={sanitizeString(subLnk.subTitle)}
+                      className="hover:underline"
+                    >
+                      {subLnk.subTitle}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ))}
           </section>
         </div>
 
@@ -122,34 +150,15 @@ const Footer = () => {
             Copyright © Fullstack MERN ebay Clone by Steven Audrey Daye. All
             Rights Reserved.{" "}
           </p>
-          <Link to={"#"} className="underline">
-            {" "}
-            Accessibility
-          </Link>
-          ,
-          <Link to={"#"} className="underline">
-            User Agreement
-          </Link>
-          ,
-          <Link to={"#"} className="underline">
-            Privacy
-          </Link>
-          ,
-          <Link to={"#"} className="underline">
-            Payments Terms of Use
-          </Link>
-          ,
-          <Link to={"#"} className="underline">
-            Cookies
-          </Link>
-          ,
-          <Link to={"#"} className="underline">
-            CA Privacy Notice
-          </Link>
-          ,
-          <Link to={"#"} className="underline">
-            Your Privacy Choices
-          </Link>
+          {footerCopyright.map((cpyr, idx) => (
+            <Link
+              to={`/${sanitizeString(cpyr)}`}
+              key={idx}
+              className="underline"
+            >
+              {cpyr}
+            </Link>
+          ))}
         </div>
       </div>
     </div>

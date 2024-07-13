@@ -1,5 +1,7 @@
 import axios from "axios";
 
+export const BACKEND_URL = "http://localhost:8000";
+
 export default axios.create({
-  baseURL: "http://localhost:8000",
+  baseURL: BACKEND_URL,
 });

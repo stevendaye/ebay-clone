@@ -1,3 +1,4 @@
+import { UserType } from "../../../../backend/src/commons/types";
 import {
   CLEAR_ERROR,
   LOAD_USER_ERROR,
@@ -15,10 +16,10 @@ export type AuthAction = {
 };
 
 type AuthState = {
-  user: unknown;
+  user: null;
   isAuthenticated: boolean;
   isLoading: boolean;
-  error: string | null;
+  error: null;
 };
 
 const initialState: AuthState = {
@@ -33,7 +34,7 @@ const updateAuthSuccess = (
   payload: AuthAction["payload"]
 ) => ({
   ...state,
-  user: payload,
+  user: payload as UserType,
   isAuthenticated: true,
   isLoading: false,
   error: null,

@@ -8,4 +8,4 @@ export { PopularCategories } from "./PopularCategories";
 export { SearchBar } from "./SearchBar";
 export { Events } from "./Events";
 export { EventCard } from "./EventCard";
-export { DefaultListing } from "./DefaultListing";
+export { CarouselListing } from "./CarouselListing";
