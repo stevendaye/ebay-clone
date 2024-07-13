@@ -57,7 +57,7 @@ export default {
 
     if (!filename)
       return next(
-        new ErrorHandler("Avatar upload failed. Please try again later", 400)
+        new ErrorHandler("Avatar upload failed. Please try again", 400)
       );
 
     const fileURL = path.join(filename);

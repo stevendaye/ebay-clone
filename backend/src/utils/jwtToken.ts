@@ -1,7 +1,7 @@
 import { Response } from "express";
-import { UserModel } from "../models/user";
+import { UserType } from "../commons/types";
 
-const sendToken = (user: UserModel, statusCode: number, res: Response) => {
+const sendToken = (user: UserType, statusCode: number, res: Response) => {
   const token = user.getJwtToken();
 
   res

@@ -1,30 +1,7 @@
-import mongoose, { Document } from "mongoose";
+import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
-
-export interface UserModel extends Document {
-  _id: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-  phoneNumber: number;
-  addresses: {
-    country: string;
-    city: string;
-    addressLine1: string;
-    addressLine2: string;
-    zipCode: string;
-    addressType: string;
-  };
-  role: string;
-  avatar: string;
-  createdAt: Date;
-  resetPasswordToken: string;
-  resetPasswordTime: Date;
-  getJwtToken(): string;
-  comparePassword(password: string): Promise<boolean>;
-}
+import { UserType } from "../commons/types";
 
 const UserSchema = new mongoose.Schema({
   firstName: {
@@ -105,12 +82,12 @@ UserSchema.methods.comparePassword = async function (password: string) {
 };
 
 UserSchema.set("toJSON", {
-  transform: (doc, ret, options) => {
-    delete ret.password;
-    return ret;
+  transform: (doc, data, options) => {
+    delete data.password;
+    return data;
   },
 });
 
-const User = mongoose.model<UserModel>("User", UserSchema);
+const User = mongoose.model<UserType>("User", UserSchema);
 
 export default User;
