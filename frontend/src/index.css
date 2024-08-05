@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --defaultColor: whitesmoke;
+  --mainColor: #2563eb;
+  --lightMainColor: #95c7ff;
+  --secondaryColor: #f7f7f7;
+  --blackColor: #000;
+}
+
 @layer base {
   @font-face {
     font-family: MarketSansRegular;
@@ -32,9 +40,26 @@
   scroll-behavior: smooth;
 }
 
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--defaultColor);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--blackColor);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--mainColor);
+}
+
 body {
   font-family: MarketSansRegular, ui-serif, Georgia;
-  background-color: white;
+  background-color: var(--defaultColor);
 }
 
 button {
@@ -56,7 +81,7 @@ button {
   background-image: url("./assets/images/boat-parts.jpg");
 }
 .swiper-2 {
-  background-color: #f7f7f7;
+  background-color: var(--secondaryColor);
 }
 .swiper-3 {
   width: 100%;
@@ -66,12 +91,12 @@ button {
   background-image: url("./assets/images/clothing.jpg");
 }
 .swiper-4 {
-  background-color: #95c7ff;
+  background-color: var(--lightMainColor);
 }
 
 .swiper-button-prev,
 .swiper-button-next {
-  background-color: #000;
+  background-color: var(--blackColor);
   width: 30px;
   height: 30px;
   border-radius: 100%;
@@ -87,7 +112,7 @@ button {
 .swiper-button-prev::after,
 .swiper-button-next::after {
   font-size: 15px;
-  color: #fff;
+  color: var(--defaultColor);
   font-weight: bold;
 }
 

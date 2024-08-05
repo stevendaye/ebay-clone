@@ -1,8 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import routes from "../routes";
 import { AuthFooter, AuthHeader } from "../components/Auth";
 import { Signin } from "../components/Signin/Signin";
+import { useSelector } from "react-redux";
+import { AppState } from "../redux/store";
+import { useEffect } from "react";
 
 export type LoginFormType = {
   email: string;
@@ -11,6 +14,13 @@ export type LoginFormType = {
 };
 
 const LoginPage = () => {
+  const { isAuthenticated } = useSelector((state: AppState) => state.authState);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    isAuthenticated && navigate(routes.home);
+  }, [isAuthenticated, navigate]);
+
   return (
     <div className="relative min-h-screen">
       <AuthHeader />

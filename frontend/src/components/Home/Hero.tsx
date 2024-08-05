@@ -12,7 +12,7 @@ import {
   highlightProductsRoad,
   highlightProductsLuxury,
 } from "../../static/init";
-import { sanitizeString } from "../../utils";
+import { sanitizeCategory } from "../../utils";
 
 export const Hero: React.FC = () => {
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ export const Hero: React.FC = () => {
   }, [play]);
 
   const handleHeroLink = (pageURL: string) => {
-    navigate(`${routes.products}?category=${sanitizeString(pageURL)}`);
+    navigate(`${routes.products}?category=${sanitizeCategory(pageURL)}`);
   };
 
   return (
@@ -109,7 +109,7 @@ export const Hero: React.FC = () => {
               <div className="flex gap-20 justify-center items-center flex-1 h-full mt-[-5px]">
                 {highlightProductsLuxury.map((h_prod_lux) => (
                   <Link
-                    to={`${routes.products}?category=${sanitizeString(
+                    to={`${routes.products}?category=${sanitizeCategory(
                       h_prod_lux.title
                     )}`}
                     key={h_prod_lux.id}
@@ -184,7 +184,7 @@ export const Hero: React.FC = () => {
               <div className="flex gap-20 justify-center items-center flex-1 h-full mt-[-5px]">
                 {highlightProductsRoad.map((h_prod_road) => (
                   <Link
-                    to={`${routes.products}?category=${sanitizeString(
+                    to={`${routes.products}?category=${sanitizeCategory(
                       h_prod_road.title
                     )}`}
                     key={h_prod_road.id}

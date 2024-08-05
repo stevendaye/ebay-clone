@@ -1,11 +1,15 @@
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AuthFooter, AuthHeader } from "../components/Auth";
 import { LeftHandBarner } from "../components/Signup/LeftHandBarner";
 import { Avatar } from "../components/Signup/Avatar";
 import { AccountSwitch } from "../components/Signup/AccountSwitch";
 import { OAuthSignup } from "../components/Signup/OAuthSignup";
 import { Signup } from "../components/Signup/Signup";
+import { useSelector } from "react-redux";
+import { AppState } from "../redux/store";
+import { useNavigate } from "react-router-dom";
+import routes from "../routes";
 
 export type SignupFormData = {
   firstName: string;
@@ -40,8 +44,15 @@ const SignupPage = () => {
     formState: { errors },
   } = formMethods;
 
+  const { isAuthenticated } = useSelector((state: AppState) => state.authState);
+  const navigate = useNavigate();
+
   const [accountType, setAccountType] = useState<string>(buyer);
   const [avatar, setAvatar] = useState<File | null>(null);
+
+  useEffect(() => {
+    isAuthenticated && navigate(routes.home);
+  }, [isAuthenticated, navigate]);
 
   return (
     <div className="relative min-h-screen">

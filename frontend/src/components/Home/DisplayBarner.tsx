@@ -1,14 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import routes from "../../routes";
-import { sanitizeString } from "../../utils";
+import { sanitizeCategory } from "../../utils";
 
 export const DisplayBarner: React.FC = () => {
   const navigate = useNavigate();
 
   const handleDisplayLink = () => {
     navigate(
-      `${routes.products}?category=${sanitizeString(
+      `${routes.products}?category=${sanitizeCategory(
         "Auto Parts & Accessories"
       )}`
     );

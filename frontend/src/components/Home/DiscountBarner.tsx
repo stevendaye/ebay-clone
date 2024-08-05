@@ -1,14 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import routes from "../../routes";
-import { sanitizeString } from "../../utils";
+import { sanitizeCategory } from "../../utils";
 
 export const DiscountBarner: React.FC = () => {
   const navigate = useNavigate();
 
   const handleDiscountLink = () => {
     navigate(
-      `${routes.products}?category=${sanitizeString("Jewelry & Watches")}`
+      `${routes.products}?category=${sanitizeCategory("Jewelry & Watches")}`
     );
   };
 

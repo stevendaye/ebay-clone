@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "../styles";
 import { footerCopyright, footerLinks } from "../static/init";
-import { sanitizeString } from "../utils";
+import { sanitizeCategory } from "../utils";
 
 const Footer = () => {
   return (
@@ -17,7 +17,7 @@ const Footer = () => {
                   {lnk.subs.map((subLnk) => (
                     <Link
                       key={subLnk.id}
-                      to={sanitizeString(subLnk.subTitle)}
+                      to={sanitizeCategory(subLnk.subTitle)}
                       className="hover:underline"
                     >
                       {subLnk.subTitle}
@@ -37,7 +37,7 @@ const Footer = () => {
                   {lnk.subs.map((subLnk) => (
                     <Link
                       key={subLnk.id}
-                      to={sanitizeString(subLnk.subTitle)}
+                      to={sanitizeCategory(subLnk.subTitle)}
                       className="hover:underline"
                     >
                       {subLnk.subTitle}
@@ -55,7 +55,7 @@ const Footer = () => {
                   {lnk.subs.map((subLnk) => (
                     <Link
                       key={subLnk.id}
-                      to={sanitizeString(subLnk.subTitle)}
+                      to={sanitizeCategory(subLnk.subTitle)}
                       className="hover:underline"
                     >
                       {subLnk.subTitle}
@@ -75,7 +75,7 @@ const Footer = () => {
                   {lnk.subs.map((subLnk) => (
                     <Link
                       key={subLnk.id}
-                      to={sanitizeString(subLnk.subTitle)}
+                      to={sanitizeCategory(subLnk.subTitle)}
                       className="hover:underline"
                     >
                       {subLnk.subTitle}
@@ -95,7 +95,7 @@ const Footer = () => {
                   {lnk.subs.map((subLnk) => (
                     <Link
                       key={subLnk.id}
-                      to={sanitizeString(subLnk.subTitle)}
+                      to={sanitizeCategory(subLnk.subTitle)}
                       className="hover:underline"
                     >
                       {subLnk.subTitle}
@@ -115,7 +115,7 @@ const Footer = () => {
                   {lnk.subs.map((subLnk) => (
                     <Link
                       key={subLnk.id}
-                      to={sanitizeString(subLnk.subTitle)}
+                      to={sanitizeCategory(subLnk.subTitle)}
                       className="hover:underline"
                     >
                       {subLnk.subTitle}
@@ -133,7 +133,7 @@ const Footer = () => {
                   {lnk.subs.map((subLnk) => (
                     <Link
                       key={subLnk.id}
-                      to={sanitizeString(subLnk.subTitle)}
+                      to={sanitizeCategory(subLnk.subTitle)}
                       className="hover:underline"
                     >
                       {subLnk.subTitle}
@@ -152,7 +152,7 @@ const Footer = () => {
           </p>
           {footerCopyright.map((cpyr, idx) => (
             <Link
-              to={`/${sanitizeString(cpyr)}`}
+              to={`/${sanitizeCategory(cpyr)}`}
               key={idx}
               className="underline"
             >

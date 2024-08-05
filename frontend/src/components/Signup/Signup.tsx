@@ -64,7 +64,7 @@ export const Signup = ({
         setToast({
           status: "error",
           message:
-            error?.response?.data?.message ||
+            error?.response?.data?.message ??
             "There was an error during your registration. Please try again",
           error: true,
         })

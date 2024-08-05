@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { categoriesNav } from "../../static/init";
 import routes from "../../routes";
-import { sanitizeString } from "../../utils";
+import { sanitizeCategory } from "../../utils";
+import { categoriesNav } from "../../static/initCategories";
 
 export const NavCategories: React.FC = () => {
   return (
@@ -10,7 +10,7 @@ export const NavCategories: React.FC = () => {
       {categoriesNav.map((catgecory, idx) => (
         <Link
           key={idx}
-          to={`${routes.products}?category=${sanitizeString(catgecory)}`}
+          to={`${routes.products}?category=${sanitizeCategory(catgecory)}`}
           className=" hover:text-blue-600 hover:underline"
         >
           {catgecory}

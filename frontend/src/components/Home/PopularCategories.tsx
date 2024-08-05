@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { popularCategories } from "../../static/init";
 import routes from "../../routes";
-import { sanitizeString } from "../../utils";
+import { sanitizeCategory } from "../../utils";
+import { popularCategories } from "../../static/initCategories";
 
 export const PopularCategories: React.FC = () => {
   return (
@@ -11,8 +11,8 @@ export const PopularCategories: React.FC = () => {
       <div className="flex justify-between mt-5">
         {popularCategories.map((p_categ) => (
           <Link
-            to={`${routes.products}?category=${sanitizeString(
-              sanitizeString(p_categ.title)
+            to={`${routes.products}?category=${sanitizeCategory(
+              sanitizeCategory(p_categ.title)
             )}`}
             key={p_categ.id}
           >

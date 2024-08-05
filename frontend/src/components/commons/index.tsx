@@ -7,3 +7,6 @@ export { CartPreview } from "./CartPreview";
 export { Countdown } from "./Countdown";
 export { NotificationsPreview } from "./NotificationsPreview";
 export { AuthMenu } from "./AuthMenu";
+export { WatchedItem } from "./WatchedItem";
+export { CartItem } from "./CartItem";
+export { CountItem } from "./CountItem";

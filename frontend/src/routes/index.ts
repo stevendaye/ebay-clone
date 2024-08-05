@@ -1,8 +1,9 @@
 export default {
   home: "/",
-  signin: "/signin",
-  signup: "/signup",
+  signin: "/sign-in",
+  signup: "/sign-up",
   account: "/account",
+  watchList: "/watch-list",
   forgotPassword: "/forgot-password",
   activationLink: "/activate-account",
   products: "/products",

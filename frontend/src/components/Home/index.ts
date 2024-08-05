@@ -1,5 +1,5 @@
 export { Hero } from "./Hero";
-export { CategoriesDropdown } from "./CategoriesDropdown";
+export { CategoriesMenu } from "./CategoriesMenu";
 export { DiscountBarner } from "./DiscountBarner";
 export { DisplayBarner } from "./DisplayBarner";
 export { FeaturedProducts } from "./FeaturedProducts";

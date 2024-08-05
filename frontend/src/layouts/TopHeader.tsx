@@ -4,7 +4,7 @@ import routes from "../routes";
 import styles from "../styles";
 import { SlArrowDown } from "react-icons/sl";
 import { HiOutlineBell } from "react-icons/hi2";
-import { AiOutlineShoppingCart } from "react-icons/ai";
+import { LuShoppingCart } from "react-icons/lu";
 import {
   AuthMenu,
   CartPreview,
@@ -14,6 +14,8 @@ import { useSelector } from "react-redux";
 import { AppState } from "../redux/store";
 import { BACKEND_URL } from "../utils/apiClient";
 import { BounceLoader } from "react-spinners";
+import { WatchListPreview } from "../components/commons/WatchListPreview";
+import { Overlay } from "../components/commons/Overlay";
 
 const TopHeader: React.FC = () => {
   const { isAuthenticated, user, isLoading } = useSelector(
@@ -23,6 +25,7 @@ const TopHeader: React.FC = () => {
   const [openCart, setOpenCart] = useState<boolean>(false);
   const [openNotifications, setOpenNotifications] = useState<boolean>(false);
   const [openAuthMenu, setOpenAuthMenu] = useState<boolean>(false);
+  const [openWatchList, setOpenWatchList] = useState<boolean>(false);
 
   return (
     <div className="border-solid border-[1px] w-full">
@@ -75,15 +78,35 @@ const TopHeader: React.FC = () => {
             Sell
           </Link>
 
-          <div className="flex gap-2 items-center cursor-pointer">
+          <div
+            className="relative flex gap-2 items-center cursor-pointer"
+            role="button"
+            tabIndex={0}
+            onClick={() => {
+              setOpenWatchList(!openWatchList);
+              setOpenNotifications(false);
+              setOpenCart(false);
+              setOpenAuthMenu(false);
+            }}
+            onKeyDown={() => {}}
+          >
             <span>Whatchlist</span>
             <SlArrowDown size={10} />
+
+            {openWatchList && (
+              <WatchListPreview setOpenWatchList={setOpenWatchList} />
+            )}
           </div>
 
           <div
             className="relative ml-5"
-            onMouseOver={() => setOpenNotifications(true)}
-            onFocus={() => setOpenNotifications(true)}
+            onMouseOver={() => {
+              setOpenNotifications(true);
+              setOpenCart(false);
+              setOpenAuthMenu(false);
+              setOpenWatchList(false);
+            }}
+            onFocus={() => {}}
             tabIndex={0}
             role="button"
           >
@@ -98,12 +121,23 @@ const TopHeader: React.FC = () => {
 
           <div
             className="relative"
-            onMouseOver={() => setOpenCart(true)}
-            onFocus={() => setOpenCart(true)}
+            onMouseOver={() => {
+              setOpenCart(true);
+              setOpenNotifications(false);
+              setOpenAuthMenu(false);
+              setOpenWatchList(false);
+            }}
+            onFocus={() => {}}
             tabIndex={0}
             role="button"
           >
-            <AiOutlineShoppingCart size={25} className="hover:cursor-pointer" />
+            <LuShoppingCart size={25} className="hover:cursor-pointer" />
+            <span
+              className="text-[9px] bg-red-500 rounded-full px-[8px] py-[2px] text-white font-bold
+              absolute right-[-8px] top-[-8px]"
+            >
+              {"7"}
+            </span>
 
             {openCart && <CartPreview setOpenCart={setOpenCart} />}
           </div>
@@ -112,8 +146,13 @@ const TopHeader: React.FC = () => {
             <div
               className="relative flex gap-2 items-center cursor-pointer w-[35px] h-[35px] rounded-full border-solid 
               border-blue-600 border-2 p-[2px]"
-              onMouseOver={() => setOpenAuthMenu(true)}
-              onFocus={() => setOpenAuthMenu(true)}
+              onMouseOver={() => {
+                setOpenAuthMenu(true);
+                setOpenCart(false);
+                setOpenNotifications(false);
+                setOpenWatchList(false);
+              }}
+              onFocus={() => {}}
               tabIndex={0}
               role="button"
             >
@@ -135,6 +174,8 @@ const TopHeader: React.FC = () => {
             data-testid="loader"
           />
         </div>
+
+        {openWatchList && <Overlay />}
       </div>
     </div>
   );

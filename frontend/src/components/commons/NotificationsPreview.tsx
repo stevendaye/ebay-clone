@@ -16,8 +16,8 @@ export const NotificationsPreview: React.FC<NotificationsPreviewProps> = ({
 
   return (
     <div
-      className="w-[300px] h-40 top-9 right-0 absolute p-5 border-solid border-[1px] z-[11] border-gray-300
-      text-gray-700 bg-white overflow-hidden flex flex-col justify-center items-center text-sm"
+      className="absolute min-w-[300px] h-40 top-9 right-0 p-5 border-solid border-[1px] z-[11] border-gray-300
+      text-gray-700 bg-white overflow-hidden flex flex-col justify-center items-center text-sm rounded-2xl"
       role="button"
       tabIndex={0}
       onMouseLeave={() => setOpenNotifications(false)}

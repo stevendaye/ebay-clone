@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import StarRatings from "react-star-ratings";
 import { Product } from "../../layouts/Header";
 import { RxCross1 } from "react-icons/rx";
 import { FiMessageSquare } from "react-icons/fi";
-import { AiOutlineShoppingCart } from "react-icons/ai";
+import { LiaCartPlusSolid } from "react-icons/lia";
 import { Link } from "react-router-dom";
 import routes from "../../routes";
+import { CountItem } from "./CountItem";
 
 type CardDetailsProps = {
   setQuickView: (val: boolean) => void;
@@ -16,15 +17,6 @@ export const CardDetails: React.FC<CardDetailsProps> = ({
   setQuickView,
   data,
 }) => {
-  const [count, setCount] = useState<number>(1);
-
-  const increment = () => {
-    count > 1 && setCount((count) => count - 1);
-  };
-  const decrement = () => {
-    setCount((count) => count + 1);
-  };
-
   const handleSendMessage = () => {
     console.log("Send Message");
   };
@@ -117,24 +109,7 @@ export const CardDetails: React.FC<CardDetailsProps> = ({
               </Link>
 
               <div className="flex flex-col gap-4 text-xs mt-auto">
-                <div className="flex items-center ml-auto font-bold">
-                  <button
-                    disabled={count === 1}
-                    className={`px-[0.6rem] py-1 bg-black text-xs text-white rounded-[3px] ${
-                      count === 1 && "disabled:bg-[#eee] disabled:text-[#aaa]"
-                    }`}
-                    onClick={increment}
-                  >
-                    -
-                  </button>
-                  <span className="flex w-6 justify-center">{count}</span>
-                  <button
-                    className="px-2 py-1 bg-black text-white text-xs rounded-[3px]"
-                    onClick={decrement}
-                  >
-                    +
-                  </button>
-                </div>
+                <CountItem inStock={data.stock} />
 
                 <div className="flex gap-3 ml-auto">
                   <button
@@ -148,7 +123,7 @@ export const CardDetails: React.FC<CardDetailsProps> = ({
                     className="bg-black px-4 py-2 text-white rounded-full flex items-center gap-2 hover:underline"
                     onClick={handleAddTocart}
                   >
-                    Add to cart <AiOutlineShoppingCart size={20} />
+                    Add to cart <LiaCartPlusSolid size={20} />
                   </button>
                 </div>
               </div>

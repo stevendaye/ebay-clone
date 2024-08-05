@@ -3,18 +3,18 @@ import { Link } from "react-router-dom";
 import styles from "../styles";
 import routes from "../routes";
 import pngEbay from "../assets/images/ebay.png";
-import { SlArrowDown } from "react-icons/sl";
+import { SlArrowDown, SlArrowUp } from "react-icons/sl";
 import { products } from "../static/init";
 import { SearchBar } from "../components/Home/SearchBar";
-import { CategoriesDropdown } from "../components/Home/CategoriesDropdown";
+import { CategoriesMenu } from "../components/Home/CategoriesMenu";
 import TopHeader from "./TopHeader";
 
-type ImageURL = {
+export type ImageURL = {
   public_id: string;
   url: string;
 };
 
-type Shop = {
+export type Shop = {
   name: string;
   shop_avatar: ImageURL;
   ratings: number;
@@ -23,7 +23,7 @@ type Shop = {
 export type Product = {
   id: number;
   name: string;
-  category: string;
+  categories: string[];
   description: string;
   condition: string;
   image_Url: ImageURL[];
@@ -38,8 +38,7 @@ export type Product = {
 const Header: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [searchData, setSearchData] = useState<Product[] | null>(null);
-  const [shopCategoryDropdown, setShopCategoryDropdown] =
-    useState<boolean>(false);
+  const [categoriesMenu, setCategoriesMenu] = useState<boolean>(false);
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     const term = e.target.value;
@@ -72,23 +71,25 @@ const Header: React.FC = () => {
               role="button"
               tabIndex={0}
               className="flex gap-1 items-center cursor-pointer"
-              onKeyDown={() => setShopCategoryDropdown(!shopCategoryDropdown)}
-              onClick={() => setShopCategoryDropdown(!shopCategoryDropdown)}
+              onKeyDown={() => {}}
+              onClick={() => setCategoriesMenu(!categoriesMenu)}
             >
               <button
                 className={`text-sm leading-4 w-16 text-gray-600 hover:text-blue-600 ${
-                  shopCategoryDropdown && "text-blue-500"
+                  categoriesMenu && "text-blue-500"
                 }`}
               >
                 Shop by category
               </button>
-              <SlArrowDown size={15} />
+              {categoriesMenu ? (
+                <SlArrowUp size={15} />
+              ) : (
+                <SlArrowDown size={15} />
+              )}
             </div>
 
-            {shopCategoryDropdown && (
-              <CategoriesDropdown
-                setShopCategoryDropdown={setShopCategoryDropdown}
-              />
+            {categoriesMenu && (
+              <CategoriesMenu setCategoriesMenu={setCategoriesMenu} />
             )}
           </div>
 

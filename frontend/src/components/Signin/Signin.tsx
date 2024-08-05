@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
 import { useMutation, useQueryClient } from "react-query";
 
 import { PasswordInput } from "../Auth/PasswordInput";
@@ -8,7 +7,6 @@ import { OAuthSignin } from "./OAuthSignin";
 import { RememberMe } from "./RememberMe";
 import { LoginFormType } from "../../pages/LoginPage";
 import { AxiosError } from "../Signup/Signup";
-import routes from "../../routes";
 import * as api from "../../utils/api";
 import { useDispatch } from "react-redux";
 import { setLoginError, setLoginSuccess } from "../../redux/actions/auth";
@@ -26,7 +24,6 @@ export const Signin = () => {
   const [visible, setVisible] = useState<boolean>(false);
 
   const query = useQueryClient();
-  const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
 
   const { mutate, isLoading } = useMutation(api.signin, {
@@ -41,7 +38,6 @@ export const Signin = () => {
       );
 
       query.invalidateQueries("validateToken");
-      navigate(routes.home);
     },
     onError(err) {
       const error = err as AxiosError;
@@ -50,7 +46,7 @@ export const Signin = () => {
         setToast({
           status: "error",
           message:
-            error?.response?.data?.message ||
+            error?.response?.data?.message ??
             "We can't sign you in a the moment. Please try again later",
           error: true,
         })

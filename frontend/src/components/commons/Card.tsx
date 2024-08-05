@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { AiOutlineEye, AiOutlineShoppingCart } from "react-icons/ai";
+import { AiOutlineEye } from "react-icons/ai";
+import { LiaCartPlusSolid } from "react-icons/lia";
 import { FcLike } from "react-icons/fc";
 import { PiHeart } from "react-icons/pi";
 import { Link } from "react-router-dom";
@@ -90,7 +91,7 @@ export const Card: React.FC<CardProps> = ({ product, withCarouselList }) => {
             )}
           </div>
           <div className="flex gap-4 text-xs text-black hover:font-bold py-2 px-3">
-            <AiOutlineShoppingCart
+            <LiaCartPlusSolid
               size={25}
               title="Add to cart"
               onClick={(e) => handleAddToCart(e, product)}
